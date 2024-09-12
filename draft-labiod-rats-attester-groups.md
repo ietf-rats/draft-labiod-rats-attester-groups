@@ -86,7 +86,7 @@ An Attester Group is inherently a dynamic entity.
 Attesters can join or leave the group, in contrast to Composite Devices that have a static composition with a pre-defined set of Attesting Environments and fixed parameters.
 The dynamic nature of an Attester Group allows for the flexibility to tailor group parameters, such as the number of Lead Attesters in the group (if any), the range of devices included in the group, and which or how much Evidence is expected to be produced by each groups.
 This kind of flexibility facilitates the implementation of various group aggregation schemes that can optimize the resources required to conduct remote attestation procedures for large device groups.
-The table below summarizes the key differences between the Group Attester concept and the Composite Device concept. 
+The table below summarizes the key differences between the Group Attester concept and the Composite Device concept.
 
 
 
