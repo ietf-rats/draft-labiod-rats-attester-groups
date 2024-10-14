@@ -1,0 +1,1 @@
+# draft-labiod-rats-attester-groups
