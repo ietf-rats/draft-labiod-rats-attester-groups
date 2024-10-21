@@ -127,16 +127,20 @@ In this section we provide two examples where all device are homogeneous with si
 Use Case 1:
 
 <strong>Application</strong>: Remote maintenance in the aerospace domain  
+
 <strong>Context</strong>: EU ASSURED H2020 Project.  
 Once an aircraft lands, there is the need for the physical presence of an engineer to go and connect to the "head unit" (in the cockpit) for extracting log data so as to check whether something needs to be checked/maintained.
 We need attestation of all core PLCs and embedded systems responsible for the core functionalities of the aircraft. All attestation reports are remotely sent (in a secure manner) to the control station once landed. We can group the attested elements into different attester groups.  
+
 <strong>Approach</strong>: we consider an attester group of 1000 aircrafts (same manufacturing brand)
 
 Use Case 2:
 
-<strong>Application</strong>: Automotive domain, a Vehicle with embedded Electronic Control Units (ECUs)
-<strong>Context</strong>: CONNECT EU H2020 project.
-The automotive industry is moving to a more hierarchical in-vehicle architecture where ECUs are monitored by Zonal Controllers and these in turn communicate with the Vehicle Computer. This is, for instance, how kinematic data are extracted from the sensors all the way up to the vehicle computer to be encoded into a V2X message. This data need to be associated with evidence on the integrity of the sensor as a data source and this is where group attestation is an interesting capability. Hierarchical-based attestation – attester group of all in-vehicle ECUs; attested group of vehicles within an intersection (for instance)
+<strong>Application</strong>: Automotive domain, a Vehicle with embedded Electronic Control Units (ECUs)  
+
+<strong>Context</strong>: CONNECT EU H2020 project.  
+The automotive industry is moving to a more hierarchical in-vehicle architecture where ECUs are monitored by Zonal Controllers and these in turn communicate with the Vehicle Computer. This is, for instance, how kinematic data are extracted from the sensors all the way up to the vehicle computer to be encoded into a V2X message. This data need to be associated with evidence on the integrity of the sensor as a data source and this is where group attestation is an interesting capability. Hierarchical-based attestation – attester group of all in-vehicle ECUs; attested group of vehicles within an intersection (for instance)  
+
 <strong>Approach</strong>: we can consider an attester group of a fleet of 70000 vehicles (same brand). We can also consider an attester group of similar ECUs. 
 
 
