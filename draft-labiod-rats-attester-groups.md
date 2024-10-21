@@ -55,7 +55,7 @@ entity:
 --- abstract
 
 This document proposes an extension to the Remote Attestation 
-Procedures architecture as defined in {{-RATS-ARCH}} by introducing the 
+Procedures architecture by introducing the 
 concept of Attester Groups. This extension aims to reduce computational 
 and communication overhead by enabling collective Evidence appraisal
 of high number of homogeneous devices with similar characteristics, thereby improving the scalability 
@@ -143,7 +143,9 @@ like attester group of all in-vehicle ECUs or attested group of vehicles within 
 
 Approach: we can consider an attester group of a fleet of 70000 vehicles (same brand). We can also consider an attester group of similar ECUs. 
 
+# Security Considerations
 
+[TBD]
 
 # IANA Considerations
 
