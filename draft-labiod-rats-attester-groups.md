@@ -128,7 +128,7 @@ we could add an Identity Type "group-id" (i.e add another row in the Table 1 in 
 In this section, we provide two examples of applications where all devices are homogeneous with similar characteristics. 
 
 Use Case 1: Remote maintenance in the aerospace domain  
-
+  
 Context: EU ASSURED H2020 Project.  
 Once an aircraft lands, there is the need for the physical presence of an engineer to go and connect to the "head unit" (in the cockpit) for extracting log data so as to check whether something needs to be checked/maintained.
 We need attestation of all core PLCs and embedded systems responsible for the core functionalities of the aircraft. All attestation reports are remotely sent (in a secure manner) to the control station once landed. We can group the attested elements into different attester groups.  
@@ -136,7 +136,7 @@ We need attestation of all core PLCs and embedded systems responsible for the co
 Approach: We can consider an attester group of 1000 aircrafts (same manufacturing brand)
 
 Use Case 2: Automotive domain, a Vehicle with embedded Electronic Control Units (ECUs)  
-
+  
 Context: CONNECT EU H2020 project.  
 The automotive industry is moving to a more hierarchical in-vehicle architecture where ECUs are monitored by Zonal Controllers and these in turn communicate with the Vehicle Computer. This is, for instance, how kinematic data are extracted from the sensors all the way up to the vehicle computer to be encoded into a V2X message. This data need to be associated with Evidence on the integrity of the sensor as a data source and this is where group attestation is an interesting capability. The attester group can be formed for hierarchical-based attestation,
 like attester group of all in-vehicle ECUs or attested group of vehicles within an intersection.     
