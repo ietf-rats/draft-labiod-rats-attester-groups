@@ -105,7 +105,7 @@ The table below summarizes the key differences between the Group Attester concep
 
 | Composite Device | Attester Group |
 | Lead Attester | No Lead Attester |
-| The Composite Device is identifiable by the Lead Attester | The Attester Group is identifiable by a group-id a unique identifier|
+| The Composite Device is identifiable by the Lead Attester | The Attester Group is identifiable by a group-id a unique identifier|  
 | Composition of Evidence of sub-modules (attesters) | No composition |
 
 # Attester Group Extension
