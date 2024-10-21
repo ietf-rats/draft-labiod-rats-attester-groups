@@ -21,6 +21,7 @@ author:
 - name: Amine Lamouchi
   org: Huawei Technologies France S.A.S.U.
   country: France
+  email:aminelamouchi@huawei-partners.com
 - name: Jun Zhang
   org: Huawei Technologies France S.A.S.U.
   email: junzhang1@huawei.com
