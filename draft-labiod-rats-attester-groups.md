@@ -44,15 +44,21 @@ entity:
 
 --- abstract
 
-This document proposes an extension to the Remote Attestation Procedures architecture as defined in {{-RATS-ARCH}} by introducing the concept of Attester Groups.
-This extension aims to reduce computational and communication overhead by enabling collective attestation of devices with similar characteristics, thereby improving the scalability of attestation processes.
+This document proposes an extension to the Remote Attestation 
+Procedures architecture as defined in {{-RATS-ARCH}} by introducing the 
+concept of Attester Groups. This extension aims to reduce computational 
+and communication overhead by enabling collective Evidence appraisal
+of high number of homogeneous devices, thereby improving the scalability 
+of attestation processes.
 
 --- middle
 
 # Introduction
 
-{{-RATS-ARCH}} defines Attesters as entities comprising at least one Attesting Environment and one Target Environment.
-It also introduces configurations, such as Composite Devices and Layered Attesters.
+{{-RATS-ARCH}} defines Attesters as entities comprising at least one Attesting Environment and one Target Environment
+co-located in one entity. It also presents different ways to compose the Attestating and Target Environemtns, 
+such as Composite Devices and Layered Attesters. Layed Attester reflects a cascade of staged Environments. It
+is more related to one device with different layers and there is a relationship between them. 
 However, mechanisms for efficiently managing multiple, independent Attesters are missing.
 Assessing the trustworthiness of large numbers of independent devices individually can result in high conveyance and processing overhead.
 This comes into effect particularly when these devices share identical hardware or firmware components, which can lead to redundancy between all individual remote attestation procedures.
@@ -82,19 +88,60 @@ It is a unique identifier assigned to each Attester Group, allowing the group to
 
 # Attester Group and Comparison to Composite Devices
 
-An Attester Group is inherently a dynamic entity.
+We should be able to leverage the similarities between attesters to avoid redundant attestations.
+An Attester Group is by definition a dynamic entity.
 Attesters can join or leave the group, in contrast to Composite Devices that have a static composition with a pre-defined set of Attesting Environments and fixed parameters.
-The dynamic nature of an Attester Group allows for the flexibility to tailor group parameters, such as the number of Lead Attesters in the group (if any), the range of devices included in the group, and which or how much Evidence is expected to be produced by each groups.
+The dynamic nature of an Attester Group allows for the flexibility to tailor group parameters.
 This kind of flexibility facilitates the implementation of various group aggregation schemes that can optimize the resources required to conduct remote attestation procedures for large device groups.
+A new mechanism not based on a composition of evidence could be defined. A composite device is an entity composed of
+multiple sub entities. Each sub entity is an Attester. In a composite device we can have multiple Attesters with a Lead
+Attester. The Attesters are appraised via the main Lead Attester's help. 
+The lead Attester generates Evidence about the layout of the whole composite device, while sub-Attesters generate Evidence about their respective (sub-)modules. 
+Composite device model is not enough flexible to  represent our definition of attester group where we do need a leader attester nor a composition of evidences of the attesters. 
+
 The table below summarizes the key differences between the Group Attester concept and the Composite Device concept.
 
 
 
-| Feature | Composite Device | Attester Group |
-| Evidence Submission | One Evidence per composite device | More granular, e.g., one Evidence per two members |
-| Lead Attester | One Lead Attester communicates with Verifier | Multiple or no lead Attesters (i.e., distributed collection) |
-| Identity | Identifiably by its lead Attester | Identified by unique group-id, independent of lead Attester |
-| Flexibility & Dynamics | Static, with pre-defined members and roles | Dynamic, where members can join or leave |
+| Composite Device | Attester Group |
+| Lead Attester | No Lead Attester |
+| The Composite Device is identifiable by the Lead Attester | The Attester Group is identifiable by a group-id a unique identifier|
+| Composition of Evidence of sub-modules (attesters) |
+| No composition |
+
+# Attester Group Extension
+
+In {{-RATS-ARCH}}- Section 3 – Architectural Overview: we will add a subsection 3.4 titled "Attester Groups". And in the draft {{-RATS-AR4SI}}- Section 2.2-Non-repudiable Identity, 
+we will add an Identity Type « group-id » (i.e add another row in the table below).
+
+| Attester Identity type	| Process-based |	VM-based | HSM-based |  
+| chip-vendor | Mandatory	| Mandatory	| Mandatory |
+| chip-hardware	| Mandatory	| Mandatory	| Mandatory |
+| target-environment	| Mandatory	| Mandatory	| Optional |
+| target-developer	| Mandatory	| Optional |	Optional |
+| instance	| Optional	| Optional	| Optional |
+
+ Table 1 in {{-RATS-AR4SI}}
+
+# Use Case Scenarios with a large scale
+
+In this section we provide two examples where all device are homogeneous with similar characteristics. 
+
+Use Case 1:
+
+<strong>Application</strong>: Remote maintenance in the aerospace domain  
+<strong>Context</strong>: EU ASSURED H2020 Project.  
+Once an aircraft lands, there is the need for the physical presence of an engineer to go and connect to the "head unit" (in the cockpit) for extracting log data so as to check whether something needs to be checked/maintained.
+We need attestation of all core PLCs and embedded systems responsible for the core functionalities of the aircraft. All attestation reports are remotely sent (in a secure manner) to the control station once landed. We can group the attested elements into different attester groups.  
+<strong>Approach</strong>: we consider an attester group of 1000 aircrafts (same manufacturing brand)
+
+Use Case 2:
+<strong>Application</strong>: Automotive domain, a Vehicle with embedded Electronic Control Units (ECUs)
+<strong>Context</strong>: CONNECT EU H2020 project.
+The automotive industry is moving to a more hierarchical in-vehicle architecture where ECUs are monitored by Zonal Controllers and these in turn communicate with the Vehicle Computer. This is, for instance, how kinematic data are extracted from the sensors all the way up to the vehicle computer to be encoded into a V2X message. This data need to be associated with evidence on the integrity of the sensor as a data source and this is where group attestation is an interesting capability. Hierarchical-based attestation – attester group of all in-vehicle ECUs; attested group of vehicles within an intersection (for instance)
+<strong>Approach</strong>: we can consider an attester group of a fleet of 70000 vehicles (same brand). We can also consider an attester group of similar ECUs. 
+
+
 
 # IANA Considerations
 
