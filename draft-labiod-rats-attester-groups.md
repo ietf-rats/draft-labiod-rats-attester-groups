@@ -12,17 +12,26 @@ stream: IETF
 
 author:
 - name: Houda Labiod
-  org: Huawei Technologies France
+  org: Huawei Technologies France S.A.S.U.
+  email: houda.labiod@huawei.com
+  street: 18, Quai du Point du Jour
+  code: '92100'
+  city: Boulogne-Billancourt
   country: France
 - name: Amine Lamouchi
-  org: Huawei Technologies France
+  org: Huawei Technologies France S.A.S.U.
   country: France
 - name: Jun Zhang
-  org: Huawei Technologies France
+  org: Huawei Technologies France S.A.S.U.
+  email: junzhang1@huawei.com
+  street: 18, Quai du Point du Jour
+  code: '92100'
+  city: Boulogne-Billancourt
   country: France
 - name: Andrzej Duda
   org: Grenoble INP - Ensimag, LIG Lab
   country: France
+  email: Andrzej.Duda@imag.fr
 - name: Henk Birkholz
   org: Fraunhofer SIT
   abbrev: Fraunhofer SIT
