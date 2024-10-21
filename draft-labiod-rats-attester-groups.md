@@ -110,8 +110,8 @@ The table below summarizes the key differences between the Group Attester concep
 
 # Attester Group Extension
 
-In {{-RATS-ARCH}}- Section 3 – Architectural Overview: we will add a subsection 3.4 titled "Attester Groups". And in the draft {{-RATS-AR4SI}}- Section 2.2-Non-repudiable Identity, 
-we will add an Identity Type « group-id » (i.e add another row in the Table 2 below).
+In Section 3 (Architectural Overview) of {{-RATS-ARCH}}: we will add a subsection 3.4 titled "Attester Groups". And in Section 2.2 (Non-repudiable Identitythe) of the draft {{-RATS-AR4SI}}, 
+we will add an Identity Type "group-id" (i.e add another row in the Table 2 below).
 
 | Attester Identity type	| Process-based |	VM-based | HSM-based |  
 | chip-vendor | Mandatory	| Mandatory	| Mandatory |
@@ -139,7 +139,8 @@ Use Case 2:
 <strong>Application</strong>: Automotive domain, a Vehicle with embedded Electronic Control Units (ECUs)  
 
 <strong>Context</strong>: CONNECT EU H2020 project.  
-The automotive industry is moving to a more hierarchical in-vehicle architecture where ECUs are monitored by Zonal Controllers and these in turn communicate with the Vehicle Computer. This is, for instance, how kinematic data are extracted from the sensors all the way up to the vehicle computer to be encoded into a V2X message. This data need to be associated with evidence on the integrity of the sensor as a data source and this is where group attestation is an interesting capability. Hierarchical-based attestation – attester group of all in-vehicle ECUs; attested group of vehicles within an intersection (for instance)  
+The automotive industry is moving to a more hierarchical in-vehicle architecture where ECUs are monitored by Zonal Controllers and these in turn communicate with the Vehicle Computer. This is, for instance, how kinematic data are extracted from the sensors all the way up to the vehicle computer to be encoded into a V2X message. This data need to be associated with Evidence on the integrity of the sensor as a data source and this is where group attestation is an interesting capability. The attester group can be formed for Hierarchical-based attestation,
+like attester group of all in-vehicle ECUs or attested group of vehicles within an intersection.     
 
 <strong>Approach</strong>: we can consider an attester group of a fleet of 70000 vehicles (same brand). We can also consider an attester group of similar ECUs. 
 
