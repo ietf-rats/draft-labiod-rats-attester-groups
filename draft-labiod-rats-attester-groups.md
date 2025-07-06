@@ -54,11 +54,11 @@ entity:
 
 --- abstract
 
-This document proposes an extension to the Remote Attestation 
-Procedures architecture by introducing the 
-concept of Attester Groups. This extension aims to reduce computational 
+This document proposes an extension to the Remote Attestation
+Procedures architecture by introducing the
+concept of Attester Groups. This extension aims to reduce computational
 and communication overhead by enabling collective Evidence appraisal
-of high number of homogeneous devices with similar characteristics, thereby improving the scalability 
+of high number of homogeneous devices with similar characteristics, thereby improving the scalability
 of attestation processes.
 
 --- middle
@@ -66,9 +66,9 @@ of attestation processes.
 # Introduction
 
 {{-RATS-ARCH}} defines Attesters as entities comprising at least one Attesting Environment and one Target Environment
-co-located in one entity. It also presents different ways to compose the Attesting and Target Environemtns, 
+co-located in one entity. It also presents different ways to compose the Attesting and Target Environemtns,
 such as Composite Devices and Layered Attesters. Layed Attester reflects a cascade of staged Environments. It
-is more related to one device with different layers and there is a relationship between them. 
+is more related to one device with different layers and there is a relationship between them.
 However, mechanisms for efficiently managing multiple, independent Attesters are missing.
 Assessing the trustworthiness of large numbers of independent devices individually can result in high conveyance and processing overhead.
 This comes into effect particularly when these devices share identical hardware or firmware components, which can lead to redundancy between all individual remote attestation procedures.
@@ -105,9 +105,9 @@ The dynamic nature of an Attester Group allows for the flexibility to tailor gro
 This kind of flexibility facilitates the implementation of various group attestation schemes that can optimize the resources required to conduct remote attestation procedures for large device groups.
  A composite device is an entity composed of
 multiple sub entities. Each sub entity is an Attester. In a composite device we can have multiple Attesters with a Lead
-Attester. The Attesters are appraised via the main Lead Attester's help. 
-The lead Attester generates Evidence about the layout of the whole composite device, while sub-Attesters generate Evidence about their respective (sub-)modules. 
-Composite device model is not enough flexible to  represent our definition of Attester Group where we do need a leader attester nor a composition of evidences of the attesters. 
+Attester. The Attesters are appraised via the main Lead Attester's help.
+The lead Attester generates Evidence about the layout of the whole composite device, while sub-Attesters generate Evidence about their respective (sub-)modules.
+Composite device model is not enough flexible to  represent our definition of Attester Group where we do need a leader attester nor a composition of evidences of the attesters.
 
 The table below summarizes the key differences between the Group Attester concept and the Composite Device concept.
 
@@ -115,33 +115,52 @@ The table below summarizes the key differences between the Group Attester concep
 
 | Composite Device | Attester Group |
 | Lead Attester | No Lead Attester |
-| The Composite Device is identifiable by the Lead Attester | The Attester Group is identifiable by a group-id a unique identifier|  
+| The Composite Device is identifiable by the Lead Attester | The Attester Group is identifiable by a group-id a unique identifier|
 | Composition of Evidence of sub-modules (attesters) | No composition |
 
 # Attester Group Extension
 
-In Section 3 (Architectural Overview) of {{-RATS-ARCH}}: we could add a subsection 3.4 titled "Attester Groups". In addidion, Section 2.2 (Non-repudiable Identitythe) of the draft {{-RATS-AR4SI}}, 
+In Section 3 (Architectural Overview) of {{-RATS-ARCH}}: we could add a subsection 3.4 titled "Attester Groups". In addidion, Section 2.2 (Non-repudiable Identitythe) of the draft {{-RATS-AR4SI}},
 we could add an Identity Type "group-id" (i.e add another row in the Table 1 in {{-RATS-AR4SI}}).
 
 # Use Case Scenarios with a large scale network
 
-In this section, we provide two examples of applications where all devices are homogeneous with similar characteristics. 
+In this section, we provide three examples of applications where all devices are homogeneous with similar characteristics.
 
-Use Case 1: Remote maintenance in the aerospace domain  
-  
-Context: EU ASSURED H2020 Project.  
+Use Case 1: Remote maintenance in the aerospace domain
+
+Context: EU ASSURED H2020 Project.
 Once an aircraft lands, there is the need for the physical presence of an engineer to go and connect to the "head unit" (in the cockpit) for extracting log data so as to check whether something needs to be checked/maintained.
-We need attestation of all core PLCs and embedded systems responsible for the core functionalities of the aircraft. All attestation reports are remotely sent (in a secure manner) to the control station once landed. We can group the attested elements into different Attester Groups.  
+We need attestation of all core PLCs and embedded systems responsible for the core functionalities of the aircraft. All attestation reports are remotely sent (in a secure manner) to the control station once landed. We can group the attested elements into different Attester Groups.
 
 Approach: We can consider an Attester Group of 1000 aircrafts (same manufacturing brand)
 
-Use Case 2: Automotive domain, a Vehicle with embedded Electronic Control Units (ECUs)  
-  
-Context: CONNECT EU H2020 project.  
-The automotive industry is moving to a more hierarchical in-vehicle architecture where ECUs are monitored by Zonal Controllers and these in turn communicate with the Vehicle Computer. This is, for instance, how kinematic data are extracted from the sensors all the way up to the vehicle computer to be encoded into a V2X message. This data need to be associated with Evidence on the integrity of the sensor as a data source and this is where group attestation is an interesting capability. The Attester Group can be formed for hierarchical-based attestation,
-like Attester Group of all in-vehicle ECUs or attested group of vehicles within an intersection.     
+Use Case 2: Automotive domain, a Vehicle with embedded Electronic Control Units (ECUs)
 
-Approach: we can consider an Attester Group of a fleet of 70000 vehicles (same brand). We can also consider an Attester Group of similar ECUs. 
+Context: CONNECT EU H2020 project.
+The automotive industry is moving to a more hierarchical in-vehicle architecture where ECUs are monitored by Zonal Controllers and these in turn communicate with the Vehicle Computer. This is, for instance, how kinematic data are extracted from the sensors all the way up to the vehicle computer to be encoded into a V2X message. This data need to be associated with Evidence on the integrity of the sensor as a data source and this is where group attestation is an interesting capability. The Attester Group can be formed for hierarchical-based attestation,
+like Attester Group of all in-vehicle ECUs or attested group of vehicles within an intersection.
+
+Approach: we can consider an Attester Group of a fleet of 70000 vehicles (same brand). We can also consider an Attester Group of similar ECUs.
+
+Use Case 3: AI computing cluster
+
+Context:The AI computing cluster is a composite computing environment composed of a group of computing nodes/chips on which a computing task is executed.
+A user or an application/large model provider needs to verify the integrity of the collected measurement/evidence information from the composite computing environment.
+
+
+Challenge: The cluster may contain heterogeneous trusted roots, and the composition may be dynamically updated. Repeated attestation is not efficient and can be very expensive.
+
+Approach: We can consider a large group of attesters or a set of group attesters. A group attester corresponding to the computing cluster of the execution of a task may be dynamically created or canceled according to the requirements of the computing task. The remote attestation server/verifier verifies the collected measurement information for the composite computing environment. Remote group attestation should hide the complexity of back-end computing node interaction from customers. Generally, a master node in the group is responsible for communicating with the client, responding to the remote attestation challenge request of the client, collecting measurement information of all the group nodes as a whole, and sending the measurement information to the remote attestation server for appraisal.
+
+When all computing nodes/chips in a computing attester group are provided by the same vendor or deployed by the same cloud vendor, a unified and centralized dedicated hardware root of trust can be deployed (e.g., hardware security chip, centralized hardware DIE, or BMC) to offload important security functions (secure storage, security monitoring, etc.) to this independent module. The trusted boot and other related measurement information of the group are securely stored on the unified root of trust. During the remote attestation process, the master node of the group collects measurement from this module, and the unified root of trust signs all the measurement. If a single root of trust manages multiple chips, a single point of failure (such as malicious intrusion and system breakdown) of the root of trust affects the security of the entire attester group managed by the root of trust. The unified trusted root should support distributed and pooled design. Multiple roots of trust may work together to enhance overall security and reliability.
+
+In heterogeneous interconnection scenarios where all computing nodes and chips in a computing cluster are provided by different vendors, a unified root of trust may not be deployed. During the group remote attestation process, the master node needs to communicate with each group node to collect its own measurement information. The information is signed by the private key of each node. The master node collects the information, packs the information, and sends it to the remote attestation server for appraisal.
+The dynamicity of the computing attested group is refected through the following aspects:
+-	the creation and cancellation of a group is dynamically triggered by the life cycle management of computing tasks. The member scale, type, and quantity of measurement information to be collected are dynamically generated and dynamically change. Before performing remote attestation, customers are required to dynamically obtain all related information through the management system interface. Based on this, a template-based remote attestation request message is defined and sent to the master node.
+-	According to the dynamic requirements of computing task functions, performance, and to the trustworthy state changes of member nodes, the overall state of the group (including the state change of each existing node, the exit of the existing node from the group, the addition of a new node to the group, the replacement of the existing node by the new node, etc.) is dynamic. These dynamic changes lead to the need for real-time dynamic update of group remote attestation. In this case, incremental update should be supported. That is, updating the measurement value of a single node does not cause the measurement of all or other nodes to be recollected and calculated, resulting in the increased communication and computing load. Especially when the group size is large, these unnecessary load needs to be optimized.
+In the process of group remote attestation, the client can not only integrate the communication key negotiation with the master node, but also support the communication key negotiation with other nodes in the group. Therefore, the key negotiation material is required to be generated by the client and different nodes separately. In addition, the exchange is completed in the request message and result return message of the remote attestation, and the exchange is transmitted to the two ends of each communication session, so that the client and each group node that need to communicate can calculate the session key for mutual communication, so as to implement the subsequent establishment of the security channel.
+
 
 # Security Considerations
 
