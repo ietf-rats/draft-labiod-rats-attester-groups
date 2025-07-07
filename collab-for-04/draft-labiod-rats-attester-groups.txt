@@ -264,29 +264,29 @@ Table of Contents
    work together to enhance overall security and reliability.
 
    In heterogeneous interconnection scenarios where all computing nodes
-   and chips in a computing cluster are provided by different vendors, a
-   unified root of trust may not be deployed.  During the group remote
-   attestation process, the master node needs to communicate with each
-   group node to collect its own measurement information.  The
-   information is signed by the private key of each node.  The master
-   node collects the information, packs the information, and sends it to
-   the remote attestation server for appraisal.  The dynamicity of the
-   computing attested group is refected through the following aspects: -
-   the creation and cancellation of a group is dynamically triggered by
-   the life cycle management of computing tasks.  The member scale,
-   type, and quantity of measurement information to be collected are
-   dynamically generated and dynamically change.  Before performing
-   remote attestation, customers are required to dynamically obtain all
-   related information through the management system interface.  Based
-   on this, a template-based remote attestation request message is
-   defined and sent to the master node. - According to the dynamic
-   requirements of computing task functions, performance, and to the
-   trustworthy state changes of member nodes, the overall state of the
-   group (including the state change of each existing node, the exit of
-   the existing node from the group, the addition of a new node to the
-   group, the replacement of the existing node by the new node, etc.) is
-   dynamic.  These dynamic changes lead to the need for real-time
-   dynamic update of group remote attestation.  In this case,
+   and chips in a computing cluster are provided by different vendors,
+   it might not be possible to deploy a unified root of trust.  During
+   the group remote attestation procedure, the master node needs to
+   communicate with each group node to collect its individual evidence
+   claims.  The node evidence is signed by the private attestation key
+   of each node.  The master node collects the information, packs the
+   information, and sends it to the remote verifier for appraisal.  The
+   dynamicity of the computing attested group is refected through the
+   following aspects: - the creation and cancellation of a group is
+   dynamically triggered by the life cycle management of computing
+   tasks.  The member scale, type, and quantity of measurement
+   information to be collected are dynamically generated and dynamically
+   change.  Before performing remote attestation, customers are required
+   to dynamically obtain all related information through the management
+   system interface.  Based on this, a template-based remote attestation
+   request message is defined and sent to the master node. - According
+   to the dynamic requirements of computing task functions, performance,
+   and to the trustworthy state changes of member nodes, the overall
+   state of the group (including the state change of each existing node,
+   the exit of the existing node from the group, the addition of a new
+   node to the group, the replacement of the existing node by the new
+   node, etc.) is dynamic.  These dynamic changes lead to the need for
+   real-time dynamic update of group remote attestation.  In this case,
    incremental update should be supported.  That is, updating the
    measurement value of a single node does not cause the measurement of
    all or other nodes to be recollected and calculated, resulting in the
