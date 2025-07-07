@@ -228,7 +228,7 @@ Table of Contents
 
    Challenge: The cluster may contain heterogeneous trusted roots, and
    the composition may be dynamically updated.  Repeated attestation is
-   not efficient and can be very expensive.
+   not efficient if done without context and can be very expensive.
 
    Approach: We can consider a large group of attesters or a set of
    group attesters.  A group attester corresponding to the computing
