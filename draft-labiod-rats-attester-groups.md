@@ -145,7 +145,7 @@ Approach: we can consider an Attester Group of a fleet of 70000 vehicles (same b
 
 Use Case 3: AI computing cluster
 
-Context:The AI computing cluster is a composite computing environment composed of a group of computing nodes/chips on which a computing task is executed.
+Context: An AI computing cluster is a composite computing environment composed of a group of computing nodes/chips on which one ore more computing tasks are executed.
 A user or an application/large model provider needs to verify the integrity of the collected measurement/evidence information from the composite computing environment.
 
 
