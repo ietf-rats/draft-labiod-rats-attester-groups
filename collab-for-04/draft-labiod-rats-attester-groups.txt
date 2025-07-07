@@ -289,17 +289,14 @@ Table of Contents
    changes lead to the need for real-time dynamic update of group remote
    attestation.  Incremental update should also be supported to reduce
    communication and computing load in large groups.  In the process of
-   group remote attestation, the client can not only integrate the
-   communication key negotiation with the master node, but also support
-   the communication key negotiation with other nodes in the group.
+   attester group, the client can not only integrate the communication
+   key negotiation with the master node, but also support the
+   communication key negotiation with other nodes in the group.
    Therefore, the key negotiation material is required to be generated
-   by the client and different nodes separately.  In addition, the
-   exchange is completed in the request message and result return
-   message of the remote attestation, and the exchange is transmitted to
-   the two ends of each communication session, so that the client and
-   each group node that need to communicate can calculate the session
-   key for mutual communication, so as to implement the subsequent
-   establishment of the security channel.
+   by the client and different nodes separately.  In addition, each
+   group node that need to communicate can calculate the session key for
+   mutual communication, so as to implement the subsequent establishment
+   of the security channel.
 
 6.  Security Considerations
 
