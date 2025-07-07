@@ -149,7 +149,7 @@ Context: An AI computing cluster is a composite computing environment composed o
 A user or an application/large model provider needs to verify the integrity of the collected measurement/evidence information from the composite computing environment.
 
 
-Challenge: The cluster may contain heterogeneous trusted roots, and the composition may be dynamically updated. Repeated attestation is not efficient and can be very expensive.
+Challenge: The cluster may contain heterogeneous trusted roots, and the composition may be dynamically updated. Repeated attestation is not efficient if done without context and can be very expensive.
 
 Approach: We can consider a large group of attesters or a set of group attesters. A group attester corresponding to the computing cluster of the execution of a task may be dynamically created or canceled according to the requirements of the computing task. The remote attestation server/verifier verifies the collected measurement information for the composite computing environment. Remote group attestation should hide the complexity of back-end computing node interaction from customers. Generally, a master node in the group is responsible for communicating with the client, responding to the remote attestation challenge request of the client, collecting measurement information of all the group nodes as a whole, and sending the measurement information to the remote attestation server for appraisal.
 
