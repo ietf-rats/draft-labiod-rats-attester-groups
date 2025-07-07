@@ -5,12 +5,12 @@
 RATS                                                           H. Labiod
 Internet-Draft                                               A. Lamouchi
 Intended status: Standards Track                                J. Zhang
-Expires: 7 January 2026              Huawei Technologies France S.A.S.U.
+Expires: 8 January 2026              Huawei Technologies France S.A.S.U.
                                                                  A. Duda
                                          Grenoble INP - Ensimag, LIG Lab
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                             6 July 2025
+                                                             7 July 2025
 
 
                  Attester Groups for Remote Attestation
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 January 2026.
+   This Internet-Draft will expire on 8 January 2026.
 
 Copyright Notice
 
@@ -220,11 +220,11 @@ Table of Contents
 
    Use Case 3: AI computing cluster
 
-   Context:The AI computing cluster is a composite computing environment
-   composed of a group of computing nodes/chips on which a computing
-   task is executed.  A user or an application/large model provider
-   needs to verify the integrity of the collected measurement/evidence
-   information from the composite computing environment.
+   Context: An AI computing cluster is a composite computing environment
+   composed of a group of computing nodes/chips on which one ore more
+   computing tasks are executed.  A user or an application/large model
+   provider needs to verify the integrity of the collected measurement/
+   evidence information from the composite computing environment.
 
    Challenge: The cluster may contain heterogeneous trusted roots, and
    the composition may be dynamically updated.  Repeated attestation is
