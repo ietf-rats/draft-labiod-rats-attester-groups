@@ -66,8 +66,8 @@ of attestation processes.
 # Introduction
 
 {{-RATS-ARCH}} defines Attesters as entities comprising at least one Attesting Environment and one Target Environment
-co-located in one entity. It also presents different ways to compose the Attesting and Target Environemtns,
-such as Composite Devices and Layered Attesters. Layed Attester reflects a cascade of staged Environments. It
+co-located in one entity. It also presents different ways to compose the Attesting and Target Environments,
+such as Composite Devices and Layered Attesters. Layered Attester reflects a cascade of staged Environments. It
 is more related to one device with different layers and there is a relationship between them.
 However, mechanisms for efficiently managing multiple, independent Attesters are missing.
 Assessing the trustworthiness of large numbers of independent devices individually can result in high conveyance and processing overhead.
@@ -98,7 +98,7 @@ It is a unique identifier assigned to each Attester Group, allowing the group to
 
 # Attester Group and Comparison to Composite Devices
 
-We should be able to leverage the similarities between attesters to avoid redundant attestations.
+We should be able to leverage the similarities between Attesters to avoid redundant attestations.
 An Attester Group is by definition a dynamic entity.
 Attesters can join or leave the group, in contrast to Composite Devices that have a static composition with a pre-defined set of Attesting Environments and fixed parameters.
 The dynamic nature of an Attester Group allows for the flexibility to tailor group parameters.
@@ -107,7 +107,7 @@ This kind of flexibility facilitates the implementation of various group attesta
 multiple sub entities. Each sub entity is an Attester. In a composite device we can have multiple Attesters with a Lead
 Attester. The Attesters are appraised via the main Lead Attester's help.
 The lead Attester generates Evidence about the layout of the whole composite device, while sub-Attesters generate Evidence about their respective (sub-)modules.
-Composite device model is not enough flexible to  represent our definition of Attester Group where we do need a leader attester nor a composition of evidences of the attesters.
+Composite device model is not enough flexible to  represent our definition of Attester Group where we do need a leader Attester nor a composition of evidences of the Attesters.
 
 The table below summarizes the key differences between the Group Attester concept and the Composite Device concept.
 
@@ -116,11 +116,11 @@ The table below summarizes the key differences between the Group Attester concep
 | Composite Device | Attester Group |
 | Lead Attester | No Lead Attester |
 | The Composite Device is identifiable by the Lead Attester | The Attester Group is identifiable by a group-id a unique identifier|
-| Composition of Evidence of sub-modules (attesters) | No composition |
+| Composition of Evidence of sub-modules (Attesters) | No composition |
 
 # Attester Group Extension
 
-In Section 3 (Architectural Overview) of {{-RATS-ARCH}}: we could add a subsection 3.4 titled "Attester Groups". In addidion, Section 2.2 (Non-repudiable Identitythe) of the draft {{-RATS-AR4SI}},
+In Section 3 (Architectural Overview) of {{-RATS-ARCH}}: we could add a subsection 3.4 titled "Attester Groups". In addition, in {{Section 2.2 of -RATS-AR4SI}} about Non-repudiable Identity,
 we could add an Identity Type "group-id" (i.e add another row in the Table 1 in {{-RATS-AR4SI}}).
 
 # Use Case Scenarios with a large scale network
@@ -151,15 +151,15 @@ A user or an application/large model provider needs to verify the integrity of t
 
 Challenge: The cluster may contain heterogeneous trusted roots, and the composition may be dynamically updated. Repeated attestation is not efficient if done without context and can be very expensive.
 
-Approach: We can consider a large group of attesters or a set of group attesters. An attester group that maps to the nodes of a cluster that executes a specific task may be dynamically created or dissolved according to the requirements of the computing task. One ore more remote attestation server/verifier appraise collected evidence/measurements for the entire composite computing environment. The intend of remote group attestation is to hide the complexity of that back-end computing node interaction from customers (the Relying Parties), while still being able to assess its trustworthiness. Generally, a master node in the group is responsible for communicating with the Verifiers (or indirectly with the customer if they triggered remote attestation as a Relying Party), responding to the remote attestation challenge request of the client, collecting evidence claims of all group nodes as a whole, and sending the evidence to the verifier for appraisal.
+Approach: We can consider a large group of Attesters or a set of group Attesters. An Attester group that maps to the nodes of a cluster that executes a specific task may be dynamically created or dissolved according to the requirements of the computing task. One ore more remote attestation server/Verifier appraise collected evidence/measurements for the entire composite computing environment. The intend of remote group attestation is to hide the complexity of that back-end computing node interaction from customers (the Relying Parties), while still being able to assess its trustworthiness. Generally, a master node in the group is responsible for communicating with the Verifiers (or indirectly with the customer if they triggered remote attestation as a Relying Party), responding to the remote attestation challenge request of the client, collecting evidence claims of all group nodes as a whole, and sending the evidence to the Verifier for appraisal.
 
-When all computing nodes/chips in a computing attester group are provided by the same vendor or deployed by the same cloud vendor, using a unified and centralized dedicated hardware root of trust can be considered (e.g., hardware security chip, centralized hardware DIE, or BMC) to offload important security functions (secure storage, security monitoring, etc.) to this independent root of trust module. The trusted boot and other related evidence claims of the group are securely stored on that unified root of trust. During the remote attestation procedure, the master node of the group collects claims aggregated and signed already as evidence by the centralized module. If a single root of trust manages multiple chips, a single point of failure (such as malicious intrusion and system breakdown) of the root of trust affects the security of the entire attester group managed by the root of trust. The unified trusted root should support distributed and pooled design. Multiple roots of trust may work together to enhance overall security and reliability.
+When all computing nodes/chips in a computing Attester group are provided by the same vendor or deployed by the same cloud vendor, using a unified and centralized dedicated hardware root of trust can be considered (e.g., hardware security chip, centralized hardware DIE, or BMC) to offload important security functions (secure storage, security monitoring, etc.) to this independent root of trust module. The trusted boot and other related evidence claims of the group are securely stored on that unified root of trust. During the remote attestation procedure, the master node of the group collects claims aggregated and signed already as evidence by the centralized module. If a single root of trust manages multiple chips, a single point of failure (such as malicious intrusion and system breakdown) of the root of trust affects the security of the entire Attester group managed by the root of trust. The unified trusted root should support distributed and pooled design. Multiple roots of trust may work together to enhance overall security and reliability.
 
-In heterogeneous interconnection scenarios where all computing nodes and chips in a computing cluster are provided by different vendors, it might not be possible to deploy a unified root of trust. During the group remote attestation procedure, the master node needs to communicate with each group node to collect its individual evidence claims. The node evidence is signed by the private attestation key of each node. The master node collects the information, packs the information, and sends it to the remote verifier for appraisal.
-The dynamicity of the computing attested group is refected through the following aspects:
--	Creation and dissolving of groups is dynamically triggered by the life cycle management of computing tasks the groups execute. The member scale, type, and quantity of evidence claims to be collected are dynamically generated and dynamically change. Before performing remote attestation, customers are required to dynamically obtain all related information through a management system interface. Based on this management information, a template-based remote attestation request message is defined and sent to the master node.
--	According to the dynamic requirements of computing task functions, performance, and to the trustworthy state changes of member nodes, the overall state of the group (including the state change of each existing node, the exit of the existing node from the group, the addition of a new node to the group, the replacement of the existing node by the new node, etc.) is dynamic. These dynamic changes lead to the need for real-time dynamic update of group remote attestation. Incremental update should also be supported to reduce communication and computing load in large groups.
-In the process of attester group, the client can not only integrate the communication key negotiation with the master node, but also support the communication key negotiation with other nodes in the group. Therefore, the key negotiation material is required to be generated by the client and different nodes separately. In addition, each group node that need to communicate can calculate the session key for mutual communication, so as to implement the subsequent establishment of the security channel.
+In heterogeneous interconnection scenarios where all computing nodes and chips in a computing cluster are provided by different vendors, it might not be possible to deploy a unified root of trust. During the group remote attestation procedure, the master node needs to communicate with each group node to collect its individual evidence claims. The node evidence is signed by the private attestation key of each node. The master node collects the information, packs the information, and sends it to the remote Verifier for appraisal.
+The dynamicity of the computing attested group is reflected through the following aspects:
+* Creation and dissolving of groups is dynamically triggered by the life cycle management of computing tasks the groups execute. The member scale, type, and quantity of evidence claims to be collected are dynamically generated and dynamically change. Before performing remote attestation, customers are required to dynamically obtain all related information through a management system interface. Based on this management information, a template-based remote attestation request message is defined and sent to the master node.
+* According to the dynamic requirements of computing task functions, performance, and to the trustworthy state changes of member nodes, the overall state of the group (including the state change of each existing node, the exit of the existing node from the group, the addition of a new node to the group, the replacement of the existing node by the new node, etc.) is dynamic. These dynamic changes lead to the need for real-time dynamic update of group remote attestation. Incremental update should also be supported to reduce communication and computing load in large groups.
+In the process of Attester group, the client can not only integrate the communication key negotiation with the master node, but also support the communication key negotiation with other nodes in the group. Therefore, the key negotiation material is required to be generated by the client and different nodes separately. In addition, each group node that need to communicate can calculate the session key for mutual communication, so as to implement the subsequent establishment of the security channel.
 
 
 # Security Considerations
