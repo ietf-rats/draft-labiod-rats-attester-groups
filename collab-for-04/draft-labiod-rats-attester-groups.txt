@@ -231,18 +231,20 @@ Table of Contents
    not efficient if done without context and can be very expensive.
 
    Approach: We can consider a large group of attesters or a set of
-   group attesters.  A group attester corresponding to the computing
-   cluster of the execution of a task may be dynamically created or
-   canceled according to the requirements of the computing task.  The
-   remote attestation server/verifier verifies the collected measurement
-   information for the composite computing environment.  Remote group
-   attestation should hide the complexity of back-end computing node
-   interaction from customers.  Generally, a master node in the group is
-   responsible for communicating with the client, responding to the
-   remote attestation challenge request of the client, collecting
-   measurement information of all the group nodes as a whole, and
-   sending the measurement information to the remote attestation server
-   for appraisal.
+   group attesters.  An attester group that maps to the nodes of a
+   cluster that executes a specific task may be dynamically created or
+   dissolved according to the requirements of the computing task.  One
+   ore more remote attestation server/verifier appraise collected
+   evidence/measurements for the entire composite computing environment.
+   The intend of remote group attestation is to hide the complexity of
+   that back-end computing node interaction from customers (the Relying
+   Parties), while still being able to assess its trustworthiness.
+   Generally, a master node in the group is responsible for
+   communicating with the Verifiers (or indirectly with the customer if
+   they triggered remote attestation as a Relying Party), responding to
+   the remote attestation challenge request of the client, collecting
+   evidence claims of all group nodes as a whole, and sending the
+   evidence to the verifier for appraisal.
 
    When all computing nodes/chips in a computing attester group are
    provided by the same vendor or deployed by the same cloud vendor, a
