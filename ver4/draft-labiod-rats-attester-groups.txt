@@ -5,12 +5,12 @@
 RATS                                                           H. Labiod
 Internet-Draft                                               A. Lamouchi
 Intended status: Standards Track                                J. Zhang
-Expires: 8 January 2026              Huawei Technologies France S.A.S.U.
+Expires: 9 July 2026                 Huawei Technologies France S.A.S.U.
                                                                  A. Duda
                                          Grenoble INP - Ensimag, LIG Lab
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                             7 July 2025
+                                                          5 January 2026
 
 
                  Attester Groups for Remote Attestation
@@ -47,11 +47,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 January 2026.
+   This Internet-Draft will expire on 9 July 2026.
 
 Copyright Notice
 
-   Copyright (c) 2025 IETF Trust and the persons identified as the
+   Copyright (c) 2026 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -197,7 +197,7 @@ Table of Contents
    Groups.
 
    Approach: We can consider an Attester Group of 1000 aircrafts (same
-   manufacturing brand)
+   manufacturing brand).
 
    Use Case 2: Automotive domain, a Vehicle with embedded Electronic
    Control Units (ECUs)
@@ -221,7 +221,7 @@ Table of Contents
    Use Case 3: AI computing cluster
 
    Context: An AI computing cluster is a composite computing environment
-   composed of a group of computing nodes/chips on which one ore more
+   composed of a group of computing nodes/chips on which one or more
    computing tasks are executed.  A user or an application/large model
    provider needs to verify the integrity of the collected measurement/
    evidence information from the composite computing environment.
@@ -234,7 +234,7 @@ Table of Contents
    group Attesters.  An Attester group that maps to the nodes of a
    cluster that executes a specific task may be dynamically created or
    dissolved according to the requirements of the computing task.  One
-   ore more remote attestation server/Verifier appraise collected
+   or more remote attestation server/Verifier appraise collected
    evidence/measurements for the entire composite computing environment.
    The intend of remote group attestation is to hide the complexity of
    that back-end computing node interaction from customers (the Relying
@@ -314,9 +314,9 @@ Table of Contents
               Voit, E., Birkholz, H., Hardjono, T., Fossati, T., and V.
               Scarlata, "Attestation Results for Secure Interactions",
               Work in Progress, Internet-Draft, draft-ietf-rats-ar4si-
-              08, 6 February 2025,
+              09, 15 August 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-rats-
-              ar4si-08>.
+              ar4si-09>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -330,12 +330,12 @@ Table of Contents
 8.2.  Informative References
 
    [I-D.ietf-rats-daa]
-              Birkholz, H., Newton, C., Chen, L., and D. Thaler, "Direct
-              Anonymous Attestation for the Remote Attestation
-              Procedures Architecture", Work in Progress, Internet-
-              Draft, draft-ietf-rats-daa-07, 3 March 2025,
+              Birkholz, H., Newton, C., Chen, L., Giannetsos, T., and D.
+              Thaler, "Direct Anonymous Attestation for the Remote
+              Attestation Procedures Architecture", Work in Progress,
+              Internet-Draft, draft-ietf-rats-daa-08, 3 September 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-rats-
-              daa-07>.
+              daa-08>.
 
    [RFC9334]  Birkholz, H., Thaler, D., Richardson, M., Smith, N., and
               W. Pan, "Remote ATtestation procedureS (RATS)
