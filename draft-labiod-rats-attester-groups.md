@@ -133,7 +133,7 @@ Context: EU ASSURED H2020 Project.
 Once an aircraft lands, there is the need for the physical presence of an engineer to go and connect to the "head unit" (in the cockpit) for extracting log data so as to check whether something needs to be checked/maintained.
 We need attestation of all core PLCs and embedded systems responsible for the core functionalities of the aircraft. All attestation reports are remotely sent (in a secure manner) to the control station once landed. We can group the attested elements into different Attester Groups.
 
-Approach: We can consider an Attester Group of 1000 aircrafts (same manufacturing brand)
+Approach: We can consider an Attester Group of 1000 aircrafts (same manufacturing brand).
 
 Use Case 2: Automotive domain, a Vehicle with embedded Electronic Control Units (ECUs)
 
@@ -145,13 +145,13 @@ Approach: we can consider an Attester Group of a fleet of 70000 vehicles (same b
 
 Use Case 3: AI computing cluster
 
-Context: An AI computing cluster is a composite computing environment composed of a group of computing nodes/chips on which one ore more computing tasks are executed.
+Context: An AI computing cluster is a composite computing environment composed of a group of computing nodes/chips on which one or more computing tasks are executed.
 A user or an application/large model provider needs to verify the integrity of the collected measurement/evidence information from the composite computing environment.
 
 
 Challenge: The cluster may contain heterogeneous trusted roots, and the composition may be dynamically updated. Repeated attestation is not efficient if done without context and can be very expensive.
 
-Approach: We can consider a large group of Attesters or a set of group Attesters. An Attester group that maps to the nodes of a cluster that executes a specific task may be dynamically created or dissolved according to the requirements of the computing task. One ore more remote attestation server/Verifier appraise collected evidence/measurements for the entire composite computing environment. The intend of remote group attestation is to hide the complexity of that back-end computing node interaction from customers (the Relying Parties), while still being able to assess its trustworthiness. Generally, a master node in the group is responsible for communicating with the Verifiers (or indirectly with the customer if they triggered remote attestation as a Relying Party), responding to the remote attestation challenge request of the client, collecting evidence claims of all group nodes as a whole, and sending the evidence to the Verifier for appraisal.
+Approach: We can consider a large group of Attesters or a set of group Attesters. An Attester group that maps to the nodes of a cluster that executes a specific task may be dynamically created or dissolved according to the requirements of the computing task. One or more remote attestation server/Verifier appraise collected evidence/measurements for the entire composite computing environment. The intend of remote group attestation is to hide the complexity of that back-end computing node interaction from customers (the Relying Parties), while still being able to assess its trustworthiness. Generally, a master node in the group is responsible for communicating with the Verifiers (or indirectly with the customer if they triggered remote attestation as a Relying Party), responding to the remote attestation challenge request of the client, collecting evidence claims of all group nodes as a whole, and sending the evidence to the Verifier for appraisal.
 
 When all computing nodes/chips in a computing Attester group are provided by the same vendor or deployed by the same cloud vendor, using a unified and centralized dedicated hardware root of trust can be considered (e.g., hardware security chip, centralized hardware DIE, or BMC) to offload important security functions (secure storage, security monitoring, etc.) to this independent root of trust module. The trusted boot and other related evidence claims of the group are securely stored on that unified root of trust. During the remote attestation procedure, the master node of the group collects claims aggregated and signed already as evidence by the centralized module. If a single root of trust manages multiple chips, a single point of failure (such as malicious intrusion and system breakdown) of the root of trust affects the security of the entire Attester group managed by the root of trust. The unified trusted root should support distributed and pooled design. Multiple roots of trust may work together to enhance overall security and reliability.
 
